@@ -1,27 +1,24 @@
 #include <iostream>
 #include<vector>
+#include<map>
 using namespace std;
-int repeatedNTimes(vector<int>& nums) {
-    vector<int> p;
-    int res;
-    int _size= nums.size();
-    sort(nums.begin(),nums.end());
-    for(int i=0;i<_size;i++)
-    {
-        p[nums[i]]++;
-    }
-    for(int i=0;i<_size;i++)
-    {
-        if(p[i]>1)
+ bool isIsomorphic(string s, string t) {
+        map<char,char> mp1;
+        map<char,char> _mp2;
+        int _size= s.size();
+        for(int i=0;i<_size;i++)
         {
-            res=i;
-            break;
+            if(mp1[s[i]]&&mp1[s[i]]!=t[i] || _mp2[t[i]]&&_mp2[t[i]]!=s[i])
+            {
+                return false;
+            }
+            mp1[s[i]]=t[i];
+            _mp2[t[i]]= s[i];
+            
         }
+        return true;
+        
     }
-    return res;
-
-    }
-
 
 int main()
 {
