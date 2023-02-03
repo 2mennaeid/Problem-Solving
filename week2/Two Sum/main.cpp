@@ -1,27 +1,30 @@
 #include <iostream>
 #include<vector>
 using namespace std;
-int repeatedNTimes(vector<int>& nums) {
-    vector<int> p;
-    int res;
-    int _size= nums.size();
-    sort(nums.begin(),nums.end());
-    for(int i=0;i<_size;i++)
-    {
-        p[nums[i]]++;
-    }
-    for(int i=0;i<_size;i++)
-    {
-        if(p[i]>1)
+    vector<int> twoSum(vector<int>& nums, int target) {
+       int sum;
+        int _size= nums.size();
+        vector<int>p;
+        for(int i=0;i<_size;i++)
         {
-            res=i;
-            break;
+            for(int j=i+1;j<_size;j++)
+            {
+                sum = nums[i]+nums[j];
+                if(sum==target)
+                {
+                    p.push_back(i);
+                    p.push_back(j);
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
         }
+        return p;
+        
     }
-    return res;
-
-    }
-
 
 int main()
 {
